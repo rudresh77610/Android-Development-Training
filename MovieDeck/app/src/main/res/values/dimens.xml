@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_padding">20dp</dimen>
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="input_height">56dp</dimen>
+    <dimen name="icon_button">40dp</dimen>
+    <dimen name="search_height">52dp</dimen>
+    <dimen name="chip_height">36dp</dimen>
+    <dimen name="poster_h_width">140dp</dimen>
+    <dimen name="poster_h_height">200dp</dimen>
+    <dimen name="hero_height">262dp</dimen>
+    <dimen name="search_poster_w">56dp</dimen>
+    <dimen name="search_poster_h">80dp</dimen>
+</resources>

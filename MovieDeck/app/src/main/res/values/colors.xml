@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#1B48F5</color>
+    <color name="blue_soft">#1A1B48F5</color>
+    <color name="orange">#FF7A1A</color>
+    <color name="ink">#0B0F1A</color>
+    <color name="text_secondary">#3A4260</color>
+    <color name="text_muted">#6B7390</color>
+    <color name="border">#D7DAE4</color>
+    <color name="border_soft">#E6E8F0</color>
+    <color name="surface_muted">#F5F6FA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="glass">#4D0B0F1A</color>
+    <color name="glass_light">#33FFFFFF</color>
+    <color name="scrim_end">#E60B0F1A</color>
+</resources>
