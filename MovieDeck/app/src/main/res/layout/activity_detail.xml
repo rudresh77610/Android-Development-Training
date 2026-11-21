@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="movie"
+            type="com.moviedeck.MovieInfo" />
+    </data>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="24dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_header_height">
+
+            <ImageView
+                android:id="@+id/ivBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Backdrop"
+                android:scaleType="centerCrop" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="@drawable/scrim_top" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/scrim_bottom" />
+
+            <LinearLayout
+                android:id="@+id/topBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/screen_padding"
+                android:paddingTop="12dp">
+
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="@dimen/icon_button"
+                    android:layout_height="@dimen/icon_button"
+                    android:background="@drawable/bg_circle_glass"
+                    android:contentDescription="Back"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_arrow_back_white" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/btnShare"
+                    android:layout_width="@dimen/icon_button"
+                    android:layout_height="@dimen/icon_button"
+                    android:background="@drawable/bg_circle_glass"
+                    android:contentDescription="Share"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_share_white" />
+
+                <ImageView
+                    android:id="@+id/btnHeart"
+                    android:layout_width="@dimen/icon_button"
+                    android:layout_height="@dimen/icon_button"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_circle_glass"
+                    android:contentDescription="Favourite"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_favorite_white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/screen_padding">
+
+                <ImageView
+                    android:id="@+id/ivPoster"
+                    android:layout_width="@dimen/detail_poster_width"
+                    android:layout_height="@dimen/detail_poster_height"
+                    android:background="@drawable/bg_poster_clip"
+                    android:clipToOutline="true"
+                    android:contentDescription="Poster"
+                    android:scaleType="centerCrop" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvGenres" android:text="@{movie.genres}"
+                        style="@style/Reel.Mono"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvTitle" android:text="@{movie.title}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:maxLines="3"
+                        android:textColor="@color/white"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvMeta" android:text="@{movie.meta}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:alpha="0.75"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/screen_padding"
+            android:gravity="center"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <LinearLayout style="@style/Reel.StatCard" android:layout_width="0dp" android:layout_height="wrap_content">
+                <ImageView android:layout_width="14dp" android:layout_height="14dp" android:contentDescription="Rating" android:src="@drawable/ic_star" />
+                <TextView android:id="@+id/statRating" android:text="@{movie.rating}" style="@style/Reel.StatValue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:id="@+id/statRatingCaption" android:text="@{movie.ratingCaption}" style="@style/Reel.StatCaption" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Reel.StatCard" android:layout_width="0dp" android:layout_height="wrap_content">
+                <ImageView android:layout_width="14dp" android:layout_height="14dp" android:contentDescription="Runtime" android:src="@drawable/ic_time" />
+                <TextView android:id="@+id/statRuntime" android:text="@{movie.runtime}" style="@style/Reel.StatValue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:id="@+id/statRuntimeCaption" android:text="@{movie.runtimeCaption}" style="@style/Reel.StatCaption" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Reel.StatCard" android:layout_width="0dp" android:layout_height="wrap_content">
+                <ImageView android:layout_width="14dp" android:layout_height="14dp" android:contentDescription="Release" android:src="@drawable/ic_event" />
+                <TextView android:id="@+id/statRelease" android:text="@{movie.release}" style="@style/Reel.StatValue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:id="@+id/statReleaseCaption" android:text="@{movie.releaseCaption}" style="@style/Reel.StatCaption" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/screen_padding"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btnTrailer"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_primary"
+                android:drawableStart="@drawable/ic_play"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:paddingHorizontal="20dp"
+                android:text="Watch trailer"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/bg_button_secondary"
+                android:drawableStart="@drawable/ic_bookmark_border"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:minWidth="110dp"
+                android:paddingHorizontal="20dp"
+                android:text="Save"
+                android:textColor="@color/ink"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/screen_padding"
+            android:layout_marginTop="24dp"
+            android:text="Synopsis"
+            android:textColor="@color/ink"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSynopsis" android:text="@{movie.synopsis}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/screen_padding"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1.15"
+            android:maxLines="4"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/btnReadMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/screen_padding"
+            android:layout_marginTop="4dp"
+            android:text="Read more"
+            android:textColor="@color/blue"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvCastTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/screen_padding"
+            android:layout_marginTop="24dp"
+            android:text="Cast"
+            android:textColor="@color/ink"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="@dimen/screen_padding" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+</layout>

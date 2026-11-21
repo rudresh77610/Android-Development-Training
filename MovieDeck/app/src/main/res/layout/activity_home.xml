@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="homeInfo"
+            type="com.moviedeck.HomeInfo" />
+        <variable
+            name="heroInfo"
+            type="com.moviedeck.HeroInfo" />
+    </data>
+
+<LinearLayout
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,14 +24,14 @@
         android:paddingTop="12dp">
 
         <TextView
-            android:id="@+id/tvDate"
+            android:id="@+id/tvDate" android:text="@{homeInfo.date}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_muted"
             android:textSize="13sp" />
 
         <TextView
-            android:id="@+id/tvGreeting"
+            android:id="@+id/tvGreeting" android:text="@{homeInfo.greeting}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvDate"
@@ -29,7 +40,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvAvatar"
+            android:id="@+id/tvAvatar" android:text="@{homeInfo.initials}"
             android:layout_width="@dimen/icon_button"
             android:layout_height="@dimen/icon_button"
             android:layout_alignParentEnd="true"
@@ -41,12 +52,24 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/btnSearch"
+            android:id="@+id/btnWatchlist"
             android:layout_width="@dimen/icon_button"
             android:layout_height="@dimen/icon_button"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
             android:layout_toStartOf="@id/tvAvatar"
+            android:background="@drawable/bg_circle_muted"
+            android:contentDescription="Watchlist"
+            android:padding="10dp"
+            android:src="@drawable/ic_bookmark_border" />
+
+        <ImageView
+            android:id="@+id/btnSearch"
+            android:layout_width="@dimen/icon_button"
+            android:layout_height="@dimen/icon_button"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/btnWatchlist"
             android:background="@drawable/bg_circle_muted"
             android:contentDescription="Search"
             android:padding="10dp"
@@ -144,7 +167,7 @@
                         android:orientation="horizontal">
 
                         <TextView style="@style/Reel.Mono" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_badge_orange" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:text="Featured" android:textColor="@color/white" android:textSize="10sp" />
-                        <TextView android:id="@+id/heroBadge" style="@style/Reel.Mono" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:background="@drawable/bg_badge_glass" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:textColor="@color/white" android:textSize="10sp" />
+                        <TextView android:id="@+id/heroBadge" android:text="@{heroInfo.badge}" style="@style/Reel.Mono" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:background="@drawable/bg_badge_glass" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:textColor="@color/white" android:textSize="10sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -155,7 +178,7 @@
                         android:padding="16dp">
 
                         <TextView
-                            android:id="@+id/heroTitle"
+                            android:id="@+id/heroTitle" android:text="@{heroInfo.title}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:maxLines="2"
@@ -164,7 +187,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/heroMeta"
+                            android:id="@+id/heroMeta" android:text="@{heroInfo.meta}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -215,7 +238,7 @@
                         android:id="@+id/sectionTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Trending now"
+                        android:text="@{heroInfo.section}"
                         android:textColor="@color/ink"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -254,3 +277,4 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>
+</layout>

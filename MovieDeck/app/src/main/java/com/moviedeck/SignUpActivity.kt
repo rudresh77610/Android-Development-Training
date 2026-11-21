@@ -25,6 +25,8 @@ class SignUpActivity : AppCompatActivity() {
         val submit = findViewById<TextView>(R.id.submit)
         val signInLink = findViewById<TextView>(R.id.sign_in_link)
 
+        val EMAIL_REGEX = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
+
         back.setOnClickListener {
             finish()
         }
@@ -37,6 +39,9 @@ class SignUpActivity : AppCompatActivity() {
             if (nameText.isEmpty() || emailText.isEmpty() || passwordText.isEmpty()) {
                 error.text = "Please fill all fields"
                 error.visibility = View.VISIBLE
+            } else if (!EMAIL_REGEX.matches(emailText)) {
+                error.text = "Enter a valid email address"
+                error.visibility = View.VISIBLE
             } else if (passwordText.length < 6) {
                 error.text = "Password must be at least 6 characters"
                 error.visibility = View.VISIBLE
@@ -45,6 +50,14 @@ class SignUpActivity : AppCompatActivity() {
                 error.visibility = View.VISIBLE
             } else {
                 error.visibility = View.GONE
+
+                val prefs = getSharedPreferences("user", MODE_PRIVATE)
+                val editor = prefs.edit()
+                editor.putString("name", nameText)
+                editor.putString("email", emailText)
+                editor.putString("password", passwordText)
+                editor.apply()
+
                 Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
