@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Create your Reel account."
+            android:text="Create your Movie account."
             android:textColor="@color/ink"
             android:textSize="34sp"
             android:textStyle="bold" />

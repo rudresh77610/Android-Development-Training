@@ -54,8 +54,28 @@ class SignInActivity : AppCompatActivity() {
                 error.text = "Please fill all fields"
                 error.visibility = View.VISIBLE
             } else {
-                error.visibility = View.GONE
-                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                val prefs = getSharedPreferences("user", MODE_PRIVATE)
+                val savedEmail = prefs.getString("email", "")
+                val savedPassword = prefs.getString("password", "")
+
+                if (savedEmail == emailText && savedPassword != passwordText) {
+                    error.text = "Wrong password"
+                    error.visibility = View.VISIBLE
+                } else {
+                    if (savedEmail != emailText) {
+                        val editor = prefs.edit()
+                        editor.putString("name", emailText.substringBefore("@"))
+                        editor.putString("email", emailText)
+                        editor.putString("password", passwordText)
+                        editor.apply()
+                    }
+
+                    error.visibility = View.GONE
+                    Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
             }
         }
 
