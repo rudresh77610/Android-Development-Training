@@ -261,7 +261,9 @@ class SearchAdapter(val items: List<MediaItem>) :
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             if (kind == "person") {
-                Toast.makeText(context, "Person details are not available yet", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, ArtistActivity::class.java)
+                intent.putExtra("id", item.id)
+                context.startActivity(intent)
             } else {
                 val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra("id", item.id)

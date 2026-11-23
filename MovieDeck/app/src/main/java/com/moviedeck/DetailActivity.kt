@@ -164,6 +164,12 @@ class CastAdapter(val items: List<CastDto>) :
             holder.binding.tvInitials.text = name.take(1)
             holder.binding.ivFace.setImageDrawable(null)
         }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, ArtistActivity::class.java)
+            intent.putExtra("id", item.id)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

@@ -26,6 +26,7 @@
         <activity android:name=".HomeActivity" android:exported="false" />
         <activity android:name=".SearchActivity" android:exported="false" />
         <activity android:name=".DetailActivity" android:exported="false" />
+        <activity android:name=".ArtistActivity" android:exported="false" />
         <activity android:name=".WatchlistActivity" android:exported="false" />
         <activity android:name=".ProfileActivity" android:exported="false" />
     </application>
