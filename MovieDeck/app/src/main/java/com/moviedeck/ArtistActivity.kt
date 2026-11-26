@@ -18,6 +18,7 @@ class ArtistActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityArtistBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         BottomNav.attach(this)
 
         val id = intent.getIntExtra("id", 0)
