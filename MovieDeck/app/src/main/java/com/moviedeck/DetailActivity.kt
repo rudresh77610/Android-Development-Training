@@ -24,6 +24,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        BottomNav.attach(this)
 
         val id = intent.getIntExtra("id", 0)
         val type = intent.getStringExtra("type") ?: "movie"
@@ -163,6 +164,12 @@ class CastAdapter(val items: List<CastDto>) :
         } else {
             holder.binding.tvInitials.text = name.take(1)
             holder.binding.ivFace.setImageDrawable(null)
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, ArtistActivity::class.java)
+            intent.putExtra("id", item.id)
+            holder.itemView.context.startActivity(intent)
         }
     }
 

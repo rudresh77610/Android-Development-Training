@@ -37,6 +37,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        BottomNav.attach(this)
 
         // setContentView(R.layout.activity_home)
         // val date = findViewById<TextView>(R.id.tvDate)
@@ -161,7 +162,9 @@ class HomeActivity : AppCompatActivity() {
             return
         }
         if (type == "person") {
-            Toast.makeText(this, "Person details are not available yet", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ArtistActivity::class.java)
+            intent.putExtra("id", item.id)
+            startActivity(intent)
         } else {
             val intent = Intent(this, DetailActivity::class.java)
             intent.putExtra("id", item.id)
@@ -333,7 +336,9 @@ class PosterAdapter(val items: List<MediaItem>, val type: String) :
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             if (kind == "person") {
-                Toast.makeText(context, "Person details are not available yet", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, ArtistActivity::class.java)
+                intent.putExtra("id", item.id)
+                context.startActivity(intent)
             } else {
                 val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra("id", item.id)

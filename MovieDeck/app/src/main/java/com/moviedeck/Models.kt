@@ -41,3 +41,17 @@ data class MovieInfo(
     val releaseCaption: String,
     val synopsis: String
 )
+
+data class ArtistInfo(
+    val initials: String,
+    val role: String,
+    val name: String,
+    val popularity: String,
+    val credits: String,
+    val born: String,
+    val place: String,
+    val known: String,
+    val creditsCount: String,
+    val bio: String,
+    val titles: String
+)

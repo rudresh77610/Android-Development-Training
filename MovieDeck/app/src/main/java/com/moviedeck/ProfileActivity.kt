@@ -13,6 +13,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        BottomNav.attach(this)
 
         binding.cardWatchlist.setOnClickListener {
             val intent = Intent(this, WatchlistActivity::class.java)
@@ -20,6 +21,9 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         binding.btnSignOut.setOnClickListener {
+            val prefs = getSharedPreferences("user", MODE_PRIVATE)
+            prefs.edit().putBoolean("loggedIn", false).apply()
+
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
             finishAffinity()
