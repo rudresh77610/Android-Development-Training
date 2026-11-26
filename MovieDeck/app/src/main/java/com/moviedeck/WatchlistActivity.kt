@@ -24,6 +24,7 @@ class WatchlistActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWatchlistBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        BottomNav.attach(this)
 
         binding.rvGrid.layoutManager = GridLayoutManager(this, 2)
 

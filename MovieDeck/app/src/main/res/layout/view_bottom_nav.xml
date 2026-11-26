@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_soft" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/navBack"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_nav_back" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_nav_circle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navQuit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_nav_square" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

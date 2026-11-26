@@ -24,6 +24,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        BottomNav.attach(this)
 
         val id = intent.getIntExtra("id", 0)
         val type = intent.getStringExtra("type") ?: "movie"

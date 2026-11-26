@@ -37,6 +37,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        BottomNav.attach(this)
 
         // setContentView(R.layout.activity_home)
         // val date = findViewById<TextView>(R.id.tvDate)

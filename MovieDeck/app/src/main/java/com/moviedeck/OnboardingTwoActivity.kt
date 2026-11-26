@@ -11,6 +11,7 @@ class OnboardingTwoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding_2)
+        BottomNav.attach(this)
 
         val next = findViewById<ImageView>(R.id.next)
         val skip = findViewById<TextView>(R.id.skip)

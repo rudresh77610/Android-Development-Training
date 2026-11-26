@@ -15,6 +15,7 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+        BottomNav.attach(this)
 
         val back = findViewById<ImageView>(R.id.back)
         val name = findViewById<EditText>(R.id.name)
@@ -56,6 +57,7 @@ class SignUpActivity : AppCompatActivity() {
                 editor.putString("name", nameText)
                 editor.putString("email", emailText)
                 editor.putString("password", passwordText)
+                editor.putBoolean("loggedIn", true)
                 editor.apply()
 
                 Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()

@@ -14,6 +14,7 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+        BottomNav.attach(this)
 
         val back = findViewById<ImageView>(R.id.back)
         val email = findViewById<EditText>(R.id.email)
@@ -69,6 +70,8 @@ class SignInActivity : AppCompatActivity() {
                         editor.putString("password", passwordText)
                         editor.apply()
                     }
+
+                    prefs.edit().putBoolean("loggedIn", true).apply()
 
                     error.visibility = View.GONE
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()

@@ -19,6 +19,8 @@ class ArtistActivity : AppCompatActivity() {
         val binding = ActivityArtistBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        BottomNav.attach(this)
+
         val id = intent.getIntExtra("id", 0)
 
         binding.rvFilmography.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)

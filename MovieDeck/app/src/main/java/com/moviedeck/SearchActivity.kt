@@ -38,6 +38,7 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+        BottomNav.attach(this)
 
         searchBox = findViewById(R.id.etSearch)
         chips = findViewById(R.id.chips)
